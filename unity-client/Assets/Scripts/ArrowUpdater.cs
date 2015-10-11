@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UIupdater : MonoBehaviour {
+public class ArrowUpdater : MonoBehaviour {
 	
 	public BallMovement ball;
 
