@@ -3,7 +3,7 @@ npm-debug.log
 database/
 .DS_Store
 ShaderCache/
-Temp/
+unity-client/Library/
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -19,7 +19,7 @@ Temp/
 *.userprefs
 *.pidb
 *.booproj
-
+*.meta
 # Unity3D generated meta files
 *.pidb.meta
 

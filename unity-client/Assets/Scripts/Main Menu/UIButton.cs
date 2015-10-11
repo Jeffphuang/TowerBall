@@ -5,7 +5,6 @@ public class UIButton : MonoBehaviour {
 	
 	public Transition change;
 	public void ChangeLevel(){
-		Debug.Log ("foo");
 		StartCoroutine (Transition());
 	}
 	IEnumerator Transition(){
