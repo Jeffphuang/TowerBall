@@ -17,7 +17,6 @@ public class FallTrigger : MonoBehaviour {
 		ball_control.StopWind ();
 		gameover.text = "Game Over";
 		score.text = "Score: " + ((int)Time.timeSinceLevelLoad).ToString();
-		restart.
-
+		restart.isActiveAndEnabled = true;
 	}
 }
