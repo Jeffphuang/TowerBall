@@ -50,9 +50,11 @@
      <Compile Include="Assets\Reporter\ReporterGUI.cs" />
      <Compile Include="Assets\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\Reporter\Test\Rotate.cs" />
-     <Compile Include="Assets\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\Scripts\BallMovement.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\HTTP.cs" />
+     <Compile Include="Assets\Scripts\Main Menu\MenuScore.cs" />
+     <Compile Include="Assets\Scripts\Main Menu\SphereRotate.cs" />
      <Compile Include="Assets\Scripts\Main Menu\UIButton.cs" />
      <Compile Include="Assets\Scripts\PlaneTilt.cs" />
      <Compile Include="Assets\Scripts\Transition.cs" />
@@ -67,6 +69,10 @@
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{8D0F1042-00AA-CA53-7CD9-54B9F14AAB13}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
