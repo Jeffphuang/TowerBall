@@ -15,6 +15,6 @@ public class SpeedUpdater : MonoBehaviour {
 	
 	void Update () {
 		float speed = ball.wind.magnitude;
-		indicator.text = speed.ToString () + units;
+		indicator.text = string.Format("{0:f1}", speed) + units;
 	}
 }

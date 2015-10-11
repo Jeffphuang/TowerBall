@@ -48,8 +48,8 @@
      <Compile Include="Assets\Scripts\ArrowUpdater.cs" />
      <Compile Include="Assets\Scripts\BallMovement.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\FallTrigger.cs" />
      <Compile Include="Assets\Scripts\SpeedUpdater.cs" />
-     <Compile Include="Assets\Scripts\UIupdater.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
