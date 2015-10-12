@@ -6,7 +6,6 @@ using System.Text;
 using SimpleJSON;
 
 public class FallTrigger : MonoBehaviour {
-
 	public Rigidbody ball;
 	public BallMovement ball_control;
 	public Text gameover;
@@ -91,5 +90,6 @@ public class FallTrigger : MonoBehaviour {
 		restart.GetComponent<Image>().color = new Vector4 (255f, 255f, 255f, 255f);
 		StartCoroutine (postScore (HTTP.identifier, score_val));
 		StartCoroutine (getScore (HTTP.identifier));
+		Ads.ShowAd ();
 	}
 }
