@@ -14,10 +14,10 @@ public class BallMovement : MonoBehaviour {
 
 	void Start () {
 		ball = GetComponent<Rigidbody> ();
-		if (user_speed == null) {
-			user_speed = 1f;
+		if (user_speed == 0f) {
+			user_speed = 3f;
 		}
-		max_wind = user_speed - 1.5f;
+		max_wind = user_speed / 2f - 1.5f;
 		next_wind = zero;
 		InvokeRepeating ("ChangeWind", 1.0f, 3.0f);
 	}
@@ -43,10 +43,19 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		float x = Input.GetAxis ("Horizontal");
-		float z = Input.GetAxis ("Vertical");
-
-		Vector3 user_force = new Vector3(x, 0, z);
+		Quaternion orientation = Input.gyro.attitude;
+		Debug.Log (orientation);
+		if (orientation.x > 0.5f) {
+			orientation.x = 0.5f;
+		} else if(orientation.x < -0.5f){
+			orientation.x = -0.5f;
+		}
+		if (orientation.y > 0.5f) {
+			orientation.y = 0.5f;
+		} else if (orientation.y < -0.5f) {
+			orientation.y = -0.5f;
+		}
+		Vector3 user_force = new Vector3(orientation[0] * 2f, 0, orientation[1] * 2f);
 		user_force.Normalize ();
 
 		ball.AddForce (user_force * user_speed + wind);
