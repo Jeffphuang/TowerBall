@@ -19,7 +19,6 @@ PBS_mat/
 *.userprefs
 *.pidb
 *.booproj
-*.meta
 
 # Unity3D generated meta files
 *.pidb.meta
