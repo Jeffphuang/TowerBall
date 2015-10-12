@@ -44,7 +44,6 @@ public class BallMovement : MonoBehaviour {
 
 	void FixedUpdate() {
 		Quaternion orientation = Input.gyro.attitude;
-		Debug.Log (orientation);
 		if (orientation.x > 0.5f) {
 			orientation.x = 0.5f;
 		} else if(orientation.x < -0.5f){

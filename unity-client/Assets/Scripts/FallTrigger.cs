@@ -31,13 +31,11 @@ public class FallTrigger : MonoBehaviour {
 
 	IEnumerator postScore(string user, string score){
 		string postData = "{\"user\":\"" + user + "\",\"score\":" + score + "}";
-		Debug.Log (postData);
 		Dictionary<string, string> headers = new Dictionary<string, string> ();
 		headers.Add ("Content-Type", "application/json");
 		byte[] data = Encoding.ASCII.GetBytes (postData.ToCharArray ());
 		WWW www = new WWW (HTTP.server + "/scores", data, headers);
 		yield return www;
-		Debug.Log (www.text);
 	}
 
 	IEnumerator getScore(string user){
@@ -45,13 +43,11 @@ public class FallTrigger : MonoBehaviour {
 		yield return www;
 		JSONNode N = new JSONNode ();
 		N = JSON.Parse (www.text);
-		Debug.Log (www.text);
 		try {
 			if (N ["success"].ToString() == "\"true\"") {
 				if (N ["result"] [0] != null) {
 					string highScore = (string)N ["result"] [0] ["scores"] [0] ["score"];
 					float highScore_val = float.Parse (highScore);
-					Debug.Log("data recieved");
 					if (highScore == null && score != null) {
 						best_score.text = "Best score: " + Time.timeSinceLevelLoad.ToString ("#.##");
 					} else if (score != null) {
@@ -73,16 +69,12 @@ public class FallTrigger : MonoBehaviour {
 	
 	IEnumerator createUser(string user){
 		string postData = "{\"user\":\""+user+"\"}";
-		Debug.Log (postData);
 		Dictionary<string, string> headers = new Dictionary<string, string>();
 		headers.Add("Content-Type", "application/json");
 		byte[] data = Encoding.ASCII.GetBytes(postData.ToCharArray());
 		WWW www = new WWW (HTTP.server + "/create", data, headers);
 		
 		yield return www;
-		
-		Debug.Log (www.text);
-		Debug.Log ("created user");
 	}
 
 	void OnTriggerEnter (Collider coll) {

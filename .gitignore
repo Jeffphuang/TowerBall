@@ -3,7 +3,8 @@ npm-debug.log
 database/
 PBS_mat/
 .DS_Store
-
+build_info.txt
+build_info.txt.meta
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/

@@ -11,7 +11,6 @@ public class MenuScore : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		StartCoroutine (getScore(HTTP.identifier));
-		Debug.Log (HTTP.identifier);
 	}
 	
 	IEnumerator getScore(string user){
@@ -35,15 +34,11 @@ public class MenuScore : MonoBehaviour {
 
 	IEnumerator createUser(string user){
 		string postData = "{\"user\":\""+user+"\"}";
-		Debug.Log (postData);
 		Dictionary<string, string> headers = new Dictionary<string, string>();
 		headers.Add("Content-Type", "application/json");
 		byte[] data = Encoding.ASCII.GetBytes(postData.ToCharArray());
 		WWW www = new WWW (HTTP.server + "/create", data, headers);
 		
 		yield return www;
-		
-		Debug.Log (www.text);
-		Debug.Log ("created user");
 	}
 }
