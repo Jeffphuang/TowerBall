@@ -9,7 +9,11 @@ public class FallTrigger : MonoBehaviour {
 	public Text gameover;
 	public Text score;
 	public Button restart;
+	public Text restart_text;
 
+	void Start () {
+		restart.enabled = false;
+	}
 
 	void OnTriggerEnter (Collider coll) {
 		ball.isKinematic = true;
@@ -17,6 +21,7 @@ public class FallTrigger : MonoBehaviour {
 		ball_control.StopWind ();
 		gameover.text = "Game Over";
 		score.text = "Score: " + ((int)Time.timeSinceLevelLoad).ToString();
-		restart.isActiveAndEnabled = true;
+		restart.enabled = true;
+		restart_text.text = "Play\nAgain";
 	}
 }
