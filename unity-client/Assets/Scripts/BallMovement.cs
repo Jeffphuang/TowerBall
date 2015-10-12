@@ -44,7 +44,6 @@ public class BallMovement : MonoBehaviour {
 
 	void FixedUpdate() {
 		Quaternion orientation = Input.gyro.attitude;
-		Debug.Log (orientation);
 		if (orientation.x > 0.5f) {
 			orientation.x = 0.5f;
 		} else if(orientation.x < -0.5f){
@@ -55,11 +54,7 @@ public class BallMovement : MonoBehaviour {
 		} else if (orientation.y < -0.5f) {
 			orientation.y = -0.5f;
 		}
-		Debug.Log (orientation [0]);
-		Debug.Log (orientation [1]);
-		Vector3 user_force = new Vector3(orientation[0] * -2f, 0, orientation[1] * -2f);
-		user_force.Normalize ();
-
+		Vector3 user_force = new Vector3(orientation[0], 0f, orientation[1]) * -2f;
 		ball.AddForce (user_force * user_speed + wind);
 	}
 }
