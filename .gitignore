@@ -2,8 +2,7 @@ node_modules/
 npm-debug.log
 database/
 .DS_Store
-ShaderCache/
-unity-client/Library/
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -20,6 +19,7 @@ unity-client/Library/
 *.pidb
 *.booproj
 *.meta
+
 # Unity3D generated meta files
 *.pidb.meta
 

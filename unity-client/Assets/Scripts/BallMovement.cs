@@ -4,37 +4,46 @@ using System.Collections;
 public class BallMovement : MonoBehaviour {
 	
 	private Rigidbody ball;
-	public float user_speed = 1f;
-	public int time;
-	public Vector3 wind;
+	private Vector3 last_wind;
+	private Vector3 next_wind;
 	private float max_wind;
+	private Vector3 zero = new Vector3 (0f, 0f, 0f);
+
+	public Vector3 wind;
+	public float user_speed;
+	
+
 
 	void Start () {
 		ball = GetComponent<Rigidbody> ();
-		max_wind = user_speed - 0.5f;
-		time = 0;
-		InvokeRepeating ("Timer", 1.0f, 1.0f);
+		if (user_speed == null) {
+			user_speed = 1f;
+		}
+		max_wind = user_speed - 1.5f;
+		last_wind = zero;
+		next_wind = zero;
+		InvokeRepeating ("ChangeWind", 1.0f, 3.0f);
 	}
 
-	void Timer() {
-		time = time + 1;
+
+	void ChangeWind() {
+		last_wind = next_wind;
+		float new_x = Random.Range (0f, 100f) - 50f;
+		float new_z = Random.Range (0f, 100f) - 50f;
+		next_wind = new Vector3 (new_x, 0f, new_z);
+		next_wind.Normalize ();
+		next_wind = next_wind * Random.Range (0f, max_wind);
+	}
+	
+
+	public void StopWind() {
+		CancelInvoke ("ChangeWind");
+		wind = zero;
+		next_wind = zero;
 	}
 
-	float NewWindSpeed () {
-		return (user_speed - 0.5f) * (1.0f - Mathf.Exp (-0.2f * time));
-	}
-
-	Vector3 NewWind () {
-
-		int polarity1 = (int)(Random.Range (0f, 2f) - 1f);
-		int polarity2 = (int)(Random.Range (0f, 2f) - 1f);
-
-		float deviation_allowed = (1.0f - Mathf.Exp (-0.35f * time));
-		return new Vector3 (polarity1 * Random.Range (0f, wind.x) + wind.x, polarity2 * Random.Range (0f, wind.y) + wind.y);
-	}
-
-	void ChangeWind () {
-
+	void Update() {
+		wind = Vector3.Lerp (wind, next_wind, Time.deltaTime);
 	}
 
 	void FixedUpdate() {
