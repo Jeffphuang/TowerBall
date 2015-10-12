@@ -28,6 +28,7 @@ router.post('/create', function(req, res, next){
  * ?id=<userId>
  */
 router.get('/scores', function(req, res, next) {
+	console.log('get request');
 	var query_params = req.query.id;
 	var scores = App.db.collection('scores');	
 	scores.find({"user": query_params}).toArray(function(err, docs) {
@@ -40,7 +41,7 @@ router.get('/scores', function(req, res, next) {
 		else {
 			res.json({
 		        success: true,
-		        finishes: docs
+		        result: docs
 		    });
 		}
 	});
@@ -52,11 +53,16 @@ router.get('/scores', function(req, res, next) {
  * body: {"user":<userId>, "score":<score>, "date": <score>}
  */
 router.post('/scores', function(req, res, next) {
+	console.log(typeof req.body);
 	var user = req.body.user;
 	var score = req.body.score;
+	console.log(req.body);
+	console.log(user);
+	console.log(score);
 	var date = new Date;
 	date = date.getTime();
 	var scores = App.db.collection('scores');
+	console.log(scores);
 	scores.find({"user": user}).toArray(function(err, docs) {
 		if (err) {
 			res.json({
@@ -94,7 +100,6 @@ router.post('/scores', function(req, res, next) {
 function findInsertIndex(array, score){
 	for(var i = 0; i < array.length; i++){
 		if(parseInt(array[i].score) < parseInt(score)){
-			console.log(array[i].score);
 			return i;
 		}
 	}
