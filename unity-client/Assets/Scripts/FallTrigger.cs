@@ -61,6 +61,9 @@ public class FallTrigger : MonoBehaviour {
 					StartCoroutine (createUser (HTTP.identifier));
 				}
 			}
+			else{
+				best_score.text= " ";
+			}
 		} catch {
 			best_score.text = " ";
 		}

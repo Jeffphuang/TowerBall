@@ -11,15 +11,17 @@ public class BallMovement : MonoBehaviour {
 	public Vector3 wind;
 	public float user_speed;	
 
-
+	
 	void Start () {
 		ball = GetComponent<Rigidbody> ();
 		if (user_speed == 0f) {
-			user_speed = 3f;
+			user_speed = 20f;
 		}
-		max_wind = user_speed / 2f - 1.5f;
+		max_wind = user_speed * 1.5f;
 		next_wind = zero;
 		InvokeRepeating ("ChangeWind", 1.0f, 3.0f);
+
+		InvokeRepeating ("IncreaseForce", 10.0f, 1.0f);
 	}
 
 
@@ -38,23 +40,26 @@ public class BallMovement : MonoBehaviour {
 		next_wind = zero;
 	}
 
+	void IncreaseForce(){
+		user_speed += 0.2f;
+		max_wind = user_speed * 1.5f;
+
+	}
 	void Update() {
 		wind = Vector3.Lerp (wind, next_wind, Time.deltaTime);
 	}
 
 	void FixedUpdate() {
-		Quaternion orientation = Input.gyro.attitude;
-		if (orientation.x > 0.5f) {
-			orientation.x = 0.5f;
-		} else if(orientation.x < -0.5f){
-			orientation.x = -0.5f;
-		}
-		if (orientation.y > 0.5f) {
-			orientation.y = 0.5f;
-		} else if (orientation.y < -0.5f) {
-			orientation.y = -0.5f;
-		}
-		Vector3 user_force = new Vector3(orientation[0], 0f, orientation[1]) * -2f;
+		Vector3 user_force = new Vector3(0f,0f,0f);
+		Vector3 accel = Input.acceleration;
+		Debug.Log ("x");
+		Debug.Log (accel.x);
+		Debug.Log ("y");
+		Debug.Log(accel.y);
+		Debug.Log ("z");
+		Debug.Log (accel.z);
+		user_force = new Vector3(accel.x , 0f, accel.y) * 2f;
+		Debug.Log (user_force);
 		ball.AddForce (user_force * user_speed + wind);
 	}
 }
