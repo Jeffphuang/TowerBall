@@ -99,7 +99,7 @@ router.post('/scores', function(req, res, next) {
 // Finds the slot at which to insert an item so the list is ordered
 function findInsertIndex(array, score){
 	for(var i = 0; i < array.length; i++){
-		if(parseInt(array[i].score) < parseInt(score)){
+		if(parseFloat(array[i].score) < parseFloat(score)){
 			return i;
 		}
 	}
