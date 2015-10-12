@@ -10,7 +10,7 @@ public class MenuScore : MonoBehaviour {
 	public Text score;
 	// Use this for initialization
 	void Start () {
-		StartCoroutine (getScore("george"));
+		StartCoroutine (getScore(HTTP.identifier));
 		Debug.Log (HTTP.identifier);
 	}
 	
@@ -29,7 +29,7 @@ public class MenuScore : MonoBehaviour {
 		}
 		else if(score.text != null){
 			score.text = "Not Yet Played!";
-			StartCoroutine (createUser ("george"));
+			StartCoroutine (createUser (HTTP.identifier));
 		}
 	}
 

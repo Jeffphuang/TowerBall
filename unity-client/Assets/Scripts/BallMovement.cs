@@ -4,14 +4,12 @@ using System.Collections;
 public class BallMovement : MonoBehaviour {
 	
 	private Rigidbody ball;
-	private Vector3 last_wind;
 	private Vector3 next_wind;
 	private float max_wind;
 	private Vector3 zero = new Vector3 (0f, 0f, 0f);
 
 	public Vector3 wind;
-	public float user_speed;
-	
+	public float user_speed;	
 
 
 	void Start () {
@@ -20,14 +18,12 @@ public class BallMovement : MonoBehaviour {
 			user_speed = 1f;
 		}
 		max_wind = user_speed - 1.5f;
-		last_wind = zero;
 		next_wind = zero;
 		InvokeRepeating ("ChangeWind", 1.0f, 3.0f);
 	}
 
 
 	void ChangeWind() {
-		last_wind = next_wind;
 		float new_x = Random.Range (0f, 100f) - 50f;
 		float new_z = Random.Range (0f, 100f) - 50f;
 		next_wind = new Vector3 (new_x, 0f, new_z);
