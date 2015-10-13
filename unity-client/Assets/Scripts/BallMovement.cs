@@ -52,14 +52,7 @@ public class BallMovement : MonoBehaviour {
 	void FixedUpdate() {
 		Vector3 user_force = new Vector3(0f,0f,0f);
 		Vector3 accel = Input.acceleration;
-		Debug.Log ("x");
-		Debug.Log (accel.x);
-		Debug.Log ("y");
-		Debug.Log(accel.y);
-		Debug.Log ("z");
-		Debug.Log (accel.z);
 		user_force = new Vector3(accel.x , 0f, accel.y) * 2f;
-		Debug.Log (user_force);
 		ball.AddForce (user_force * user_speed + wind);
 	}
 }
