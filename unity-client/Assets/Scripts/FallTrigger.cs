@@ -93,6 +93,11 @@ public class FallTrigger : MonoBehaviour {
 		restart.GetComponent<Image>().color = new Vector4 (255f, 255f, 255f, 255f);
 		StartCoroutine (postScore (HTTP.identifier, score_val));
 		StartCoroutine (getScore (HTTP.identifier));
-		Ads.ShowAd ();
+		Debug.Log (Ads.count);
+		if(Ads.count % 3 == 0){
+			Debug.Log ("showed ad");
+			Ads.ShowAd ();
+		}
+		Ads.count++;
 	}
 }
