@@ -4,4 +4,4 @@
 https://play.google.com/store/apps/details?id=ca.jeffreyhuang.towerball
 
 ####iOS:
-In Developement
+https://itunes.apple.com/app/tower-ball/id1067489291?mt=8
